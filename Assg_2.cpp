@@ -11,6 +11,11 @@ public:
 		this->data = val;
 		this->left = this->right = nullptr;
 	}
+
+    node* operator= (node* oldRoot){
+		node* newRoot = oldRoot;
+		return newRoot;
+	}
 };
 
 class BST{
@@ -145,11 +150,13 @@ int main(){
     // obj.breadthFirstTraversal(obj.root);
     node* minnode;
     node* maxnode;
+    node* copytree;
+
     // cout<<"\n\nmini: "<<minnode->data<<" maxi: "<<maxnode->data;
     int k;
     while(k != -1){
         cout<<"\n1. Construct a BST.\n2. Insert a node.\n3. Count of nodes in Longest path.\n4. Minimum in BST.\n";
-        cout<<"5. Maximum in BST.\n6. Swap the BST.\n7. Search in BST";
+        cout<<"5. Maximum in BST.\n6. Swap the BST.\n7. Search in BST:  ";
         cin>>k;
         switch (k)
         {
@@ -169,12 +176,13 @@ int main(){
 			break;
 		case 5:
 			maxnode = obj.maximumInBST(obj.root);
-			cout<<"\nMinimum node in BST: "<<minnode->data;
+			cout<<"\nMaximum node in BST: "<<maxnode->data;
 			break;
 		case 6:
+            copytree = obj.root;
 			cout<<"\nAfter Swapping the tree: ";
-            obj.swapTree(obj.root);
-			obj.breadthFirstTraversal(obj.root);
+            obj.swapTree(copytree);
+			obj.breadthFirstTraversal(copytree);
 			break;
 		case 7:
             cout<<"\nEnter element to search: ";
