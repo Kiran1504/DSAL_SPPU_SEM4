@@ -180,11 +180,12 @@ class BST{
             }
         }
         if(root->data < key){
-            return deleteFromBST(root->right, key);
+            root->right = deleteFromBST(root->right, key);
         }
         else{
-            return deleteFromBST(root->left, key);
+            root->left = deleteFromBST(root->left, key);
         }
+        return root;
     }
 };
 
@@ -198,10 +199,11 @@ int main(){
     node* copytree;
 
     // cout<<"\n\nmini: "<<minnode->data<<" maxi: "<<maxnode->data;
+    int key;
     int k;
     while(k != -1){
-        cout<<"\n1. Construct a BST.\n2. Insert a node.\n3. Count of nodes in Longest path.\n4. Minimum in BST.\n";
-        cout<<"5. Maximum in BST.\n6. Swap the BST.\n7. Search in BST:  ";
+        cout<<"\n1. Construct a BST.\n2. Insert a node.\n3.Delete a node.\n4. Count of nodes in Longest path.\n5";
+        cout<<". Minimum in BST.\n6. Maximum in BST.\n7. Swap the BST.\n8. Search in BST:  ";
         cin>>k;
         switch (k)
         {
@@ -212,29 +214,35 @@ int main(){
 			obj.insertInBST();
             obj.breadthFirstTraversal(obj.root);
 			break;
-		case 3:
+        case 3:
+            cout<<"\nEnter the key to be deleted: ";
+            cin>>key;
+            obj.deleteFromBST(obj.root, key);
+            obj.breadthFirstTraversal(obj.root);
+            break;
+		case 4:
 			cout<<"\nCount of nodes in Longest path: "<<obj.longestPathFromRoot(obj.root);
 			break;
-		case 4:
+		case 5:
 			minnode = obj.minimumInBST(obj.root);
 			cout<<"\nMinimum node in BST: "<<minnode->data;
 			break;
-		case 5:
+		case 6:
 			maxnode = obj.maximumInBST(obj.root);
 			cout<<"\nMaximum node in BST: "<<maxnode->data;
 			break;
-		case 6:
+		case 7:
             copytree = obj.root;
 			cout<<"\nAfter Swapping the tree: ";
             obj.swapTree(copytree);
 			obj.breadthFirstTraversal(copytree);
 			break;
-		case 7:
+		case 8:
             cout<<"\nEnter element to search: ";
-            int key;
+            int sKey;
             bool result;
-            cin>>key;
-			result = obj.searchInBST(obj.root, key);
+            cin>>sKey;
+			result = obj.searchInBST(obj.root, sKey);
 			cout<<"\nSearch Result: "<<result;
 			break;
         

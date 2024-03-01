@@ -239,24 +239,6 @@ class ThreadedBST{
 int main(){
     // 20 10 30 5 16 14 13 15 -1
     ThreadedBST obj;
-    // obj.insertInTBST();
-    // cout<<"tree input success"<<endl;
-    // obj.inorder();
-    // cout<<endl;
-    // obj.deleteNodeInBST(obj.root, 15);
-    // obj.inorder();
-    // obj.deleteNodeInBST(obj.root, 16);
-    // obj.inorder();
-    // obj.deleteNodeInBST(obj.root, 10);
-    // obj.inorder();
-    // obj.deleteNodeInBST(obj.root, 99);
-    // obj.inorder();
-    // cout<<endl;
-    // cout<<(obj.successor(obj.root))->data<<endl;
-    // cout<<obj.predecessor(obj.root)->data;
-
-
-
     int k;
     while(k != -1){
         cout<<"\n1. Construct a BST.\n2. Inorder\n";
