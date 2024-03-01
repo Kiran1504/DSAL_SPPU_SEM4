@@ -70,19 +70,22 @@ class ThreadedBST{
         if(!root) return;
         cout<<"\nInorder Traversal is:  ";
         Node* temp = root;
-        while (temp->right)
-        {   
-            while(!temp->lthread){
-                temp = temp->left;
-            }
-            cout<<temp->data<<"  ";
-            while(temp->rthread){
-                temp = temp->right;
-                cout<<temp->data<<"  ";
-            }
-            temp = temp->right;
+        while(!temp->lthread){
+            temp = temp->left;
         }
-        cout<<temp->data<<endl;   
+        while (temp)
+        {   
+            cout<<temp->data<<"  ";
+            if(temp->rthread)
+                temp = temp->right;
+            else{
+                temp = temp->right;
+                while(!temp->lthread){
+                    temp = temp->left;
+                }
+            }
+        }
+        // cout<<temp->data<<endl;   
     }
 
     Node* successor(Node* ptr){

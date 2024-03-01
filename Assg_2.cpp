@@ -118,6 +118,13 @@ class BST{
         swapTree(root->right);
 	
     }
+    node* successor(node* ptr){
+        node* temp = ptr->right;
+        while(temp->left){
+            temp = temp->left;
+        }
+        return temp;
+    }
     int longestPathFromRoot(node* root){
             if(root == nullptr){
             return 0;
@@ -139,6 +146,44 @@ class BST{
         }
         else{
             return searchInBST(root->left, key);
+        }
+    }
+
+    node* deleteFromBST(node* root, int key){
+        if(root == nullptr){
+            return root;
+        }
+        if(root->data == key){
+            if(!root->left && !root->right){
+                delete root;
+                return nullptr;
+            }
+
+            //1 child
+            if(root->left && !root->right){
+                node* temp = root->left;
+                delete root;
+                return temp;
+            }
+            if(!root->left && root->right){
+                node* temp = root->right;
+                delete root;
+                return temp;
+            }
+
+            // 2 child
+            if(root->left && root->right){
+                int succ = successor(root)->data;
+                root->data = succ;
+                root->right = deleteFromBST(root->right, succ);
+                return root;
+            }
+        }
+        if(root->data < key){
+            return deleteFromBST(root->right, key);
+        }
+        else{
+            return deleteFromBST(root->left, key);
         }
     }
 };
