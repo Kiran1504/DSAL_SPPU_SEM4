@@ -114,19 +114,22 @@ class ThreadedBST{
         }
         cout<<"\nPreorder Traversal is:  ";
         Node* temp = root;
-        while (temp->right)
-        {   
-            while(temp){
-                cout<<temp->data<<"  ";
-                if(temp->lthread) break;
+        while(temp){
+            cout<<temp->data<<"  ";
+            if(!temp->lthread){
                 temp = temp->left;
             }
-            while(temp->rthread){
+            else if(!temp->rthread){
                 temp = temp->right;
             }
-            temp = temp->right;
+            else{
+                while(temp && temp->rthread){
+                    temp = temp->right;
+                }
+                if(temp)
+                    temp = temp->right;
+            }
         }
-        cout<<temp->data<<endl; 
     }
 
     Node* caseA(Node* root, Node* par, Node* ptr){
