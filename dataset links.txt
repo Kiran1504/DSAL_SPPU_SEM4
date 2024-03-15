@@ -1,0 +1,3 @@
+https://www.kaggle.com/datasets/ramamet4/nse-stocks-database  -- nifty 50 opening closing data set
+https://www.kaggle.com/datasets/hwwang98/fintechdataset -- credit card data set
+https://www.kaggle.com/datasets/ealtman2019/credit-card-transactions --  credit_card_transactions
